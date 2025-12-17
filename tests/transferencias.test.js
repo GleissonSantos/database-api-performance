@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { sleep } from 'k6';
 import { check } from 'k6';
+import { getBaseUrl } from '../utils/variables.js';    
 import { getAuthToken } from '../helpers/autentication.js';
 
 
@@ -13,7 +14,7 @@ export default function () {
   const token = getAuthToken();
   console.log('Token obtido:', token);
 
-  const url = 'http://localhost:3000/transferencias'
+  const url = getBaseUrl() + '/transferencias'
   const payload = JSON.stringify({
     contaOrigem: 1,
     contaDestino: 2,
